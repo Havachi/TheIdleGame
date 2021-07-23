@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,27 +12,37 @@ namespace TheIdleGame
         //Canvas
         public Canvas canvas;
         //Clicker Labels
-        private Text lblAddMoney;
+        
 
-        public double moneyPerClick;
+        public List<Button> clickerBtns;
+
+        double woodClickerProd = 1;
         public double totalClick;
         // Start is called before the first frame update
         void Start()
         {
+            clickerBtns[0].gameObject.SetActive(true);
+            clickerBtns[1].gameObject.SetActive(false);
+
             game = GetComponentInParent<Game>();
-            moneyPerClick = 1;
+            
         }
 
         // Update is called once per frame
         void Update()
-        {
-            //Clicker Button
-            lblAddMoney.text = "+" + moneyPerClick.ToString("N2") + " $";
+        {       
+            for (int i = 0; i < clickerBtns.Count; i++)
+            {
+               Text lblName =  (Text)clickerBtns[i].transform.GetChild(0).gameObject.GetComponent(typeof(Text));
+               Text lblProd =  (Text)clickerBtns[i].transform.GetChild(1).gameObject.GetComponent(typeof(Text));
+               lblName.text = clickerTexts.GetClickerTitle(i);
+               lblProd.text = clickerTexts.GetClickerProdPrefix(i) + woodClickerProd + clickerTexts.GetClickerProdSuffix(i);
+            }
         }
-        public void Click_Clicker()
+       
+        public void Click_Wood()
         {
-            Game game = this.GetComponentInParent<Game>();
-            game.AddMoney(moneyPerClick);
+            game.qtyWood++;
             totalClick++;
         }
     }

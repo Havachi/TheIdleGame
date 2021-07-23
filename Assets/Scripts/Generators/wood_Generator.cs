@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace TheIdleGame
 {
@@ -11,6 +13,7 @@ namespace TheIdleGame
         
         public Wood_Generator()
         {
+           
            baseProduction = 1;//in x / second
            totalMultiplyer = 1;
            materialProduced = new Materials(1, "wood");

@@ -14,6 +14,9 @@ namespace TheIdleGame
         public Materials materialProduced;
         public Materials requiredMaterial;
         public double requiredQuantity;
+        private List<Generator> genType;
+
+        //Empty Generator
         public Generator()
         {
             baseProduction = 0;
@@ -23,16 +26,8 @@ namespace TheIdleGame
             requiredQuantity = 0;
         }
         public Generator(int genID)
-        {
-            Generator tmp = new Generator();
-            if (genID == 1)
-            {
-                tmp = new Wood_Generator();
-            }
-            else if (genID == 2)
-            {
-                tmp = new Iron_Generator();
-            }
+        {            
+            Generator tmp = genType[genID];
             this.baseProduction = tmp.baseProduction;
             this.totalMultiplyer = tmp.totalMultiplyer;
             this.materialProduced = tmp.materialProduced;

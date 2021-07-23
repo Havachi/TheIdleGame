@@ -1,5 +1,5 @@
-using System;
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,59 +8,33 @@ namespace TheIdleGame
     public class Idler : MonoBehaviour
     {
         private Game game;
-
         public Canvas canvas;
-        //Idler Lables
-        public Text lblIdlerCount;
-        public Text lblIdleNextBonus;
-        public Text lblIdleCost;
-        //Idler Upgrade Lables
-        public Text lblIdlerUpgradeNextBonus;
-        public Text lblIdlerUpgradeCost;
-
-        //Idler
-        public double idlerCount;
-        public double idlerCost;
-        public double idlerBaseCost;
-        public double idlerGrowth;
-        public double idlerBonus;
-        public double idlerBaseBonus;
-        public double idlerMult;
-
-        //Idler Upgrade
-        public double upgradeIdlerTier;
-        public double upgradeIdlerCost;
-        public double upgradeIdlerBaseCost;
-        public double upgradeidlerGrowth;
-        public double upgradeIdlerBonus;
-        public double upgradeIdlerBaseBonus;
-
+        public List<Button> idlerBtns;
+        public List<Generator> genType;
         // Start is called before the first frame update
         void Start()
         {
-            /*
+            
             game = GetComponentInParent<Game>();
+            Generator gen = new Generator();
+            
             //Idler
-            idlerCount = 0;         
-            idlerBaseCost = 5;
-            idlerCost = idlerBaseCost;
-            idlerGrowth = 1.07;      
-            idlerBaseBonus = 1;
-            idlerBonus = 0;
-            idlerMult = 1;
-            //Idler Upgrade
-            upgradeIdlerTier = 0;     
-            upgradeIdlerBaseCost = 100;
-            upgradeIdlerCost = upgradeIdlerBaseCost;
-            upgradeidlerGrowth = 1.12;
-            upgradeIdlerBaseBonus = 2;
-            upgradeIdlerBonus = 0;*/
 
         }
-
+    
         // Update is called once per frame
         void Update()
         {
+            if(idlerBtns.Count > 0)
+            {
+                List<Text> lbl = new List<Text>();
+                for (int i = 0; i < idlerBtns.Count; i++)
+                {
+                    Text lblGeneratorTitle = (Text)idlerBtns[i].transform.GetChild(0).gameObject.GetComponent(typeof(Text));
+                    Text lblGeneratorProd = (Text)idlerBtns[i].transform.GetChild(0).gameObject.GetComponent(typeof(Text));
+                }
+            }
+         /*   
             //Idler
             lblIdlerCount.text = "Idlers: " + idlerCount;
             if (idlerCount == 0) {
@@ -102,9 +76,11 @@ namespace TheIdleGame
 
 
             idlerBonus = Math.calculate_NextBonus(idlerBaseBonus, idlerCount, idlerMult * upgradeIdlerBonus > 0 ? upgradeIdlerBonus : 1);
+        */
         }
         public void Click_AddIdler()
         {
+            /*
             if (game.totalMoney >= idlerCost)
             {
                 game.SubMoney(idlerCost);
@@ -124,9 +100,11 @@ namespace TheIdleGame
                 }
                 idlerCost = Math.calculate_NextCost(idlerBaseCost, idlerGrowth, idlerCount);
             }
+            */
         }
         public void Click_UpgradeIdler()
         {
+            /*
             if (game.totalMoney >= upgradeIdlerCost)
             {
                 game.SubMoney(upgradeIdlerCost);
@@ -135,6 +113,7 @@ namespace TheIdleGame
                 upgradeIdlerBonus = Math.calculate_NextBonus(upgradeIdlerBaseBonus, upgradeIdlerTier, 1);
 
             }
+            */
         }
 
 
